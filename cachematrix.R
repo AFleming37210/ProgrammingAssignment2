@@ -1,15 +1,14 @@
-#Write the following functions:
 ##1 makeCacheMatric: function that creates a special matric object that can cache its inverse
 
 makeCacheMatrix <- function(x = maxtrix()) {
-  inv <- NULL
+  inv <- NULL 
   set <- function(y) {
     x <<- y
-    inv <<- NULL
+    inv <<- NULL 
   }
-  get <- function() {x}
+  get <- function() {x} #function to get matrix
   setinverse <- function(inverse) inv <<- inverse
-  getinverse <- function() {inv}
+  getinverse <- function() {inv}  #function to obtain the inverse of the matrix
   list(set = set, get = get,
        setinverse = setinverse,
        getinverse = getinverse)
@@ -19,11 +18,11 @@ makeCacheMatrix <- function(x = maxtrix()) {
 #Computing the inverse of a square matrix can be done using hte solve function if X is square then solve(x) returns its inverse, assume that the matrix supplied is always invertible. 
 cacheSolve <- function(x, ...) {
   inv <- x$getinverse()
-  if(!is.null(inv)) {
+  if(!is.null(inv)) {             #Checks to see whether inv is NULL
     message("getting cached data")
-    return(inv)
+    return(inv)           #If inv is not NULL then value returned
   }
-  mat <- x$get()
+  mat <- x$get()              #If inv is Null then inverse calculated
   inv <- solve(mat, ...)
   x$setinverse(inv)
   inv
